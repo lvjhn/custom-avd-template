@@ -1,0 +1,13 @@
+{
+    "name" : "custom-avd-template",
+    "backend" : {
+        "UBUNTU_VERSION" : "22.04",
+        "NODE_VERSION" : "20.14.0"
+    },
+    "frontend" : {
+        "NODE_VERSION" : "20.14.0"
+    }, 
+    "docker-compose" : {
+        "IP_PREFIX" : "172.28.0"
+    }
+}

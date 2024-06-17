@@ -1,0 +1,12 @@
+FROM node:#NODE_VERSION#
+
+ENV NAME=#PROJECT_NAME#
+
+# create working directory
+RUN mkdir /home/${NAME}.frontend 
+WORKDIR /home/${NAME}.frontend
+
+# set up entry point 
+RUN mkdir ./utils/
+RUN touch ./utils/start.sh
+ENTRYPOINT ["bash", "utils/start.sh"]
