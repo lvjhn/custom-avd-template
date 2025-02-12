@@ -2,7 +2,7 @@ version: "3.3"
 
 services: 
   frontend: 
-    container_name: #PROJECT_NAME#.frontend 
+    container_name: custom-avd-template.frontend 
     env_file:
       - .env 
     build: 
@@ -13,13 +13,13 @@ services:
       - "${FRONTEND_PORT}:5173" 
     privileged: true 
     volumes: 
-      - ./frontend:/home/#PROJECT_NAME#.frontend 
+      - ./frontend:/home/custom-avd-template.frontend 
     networks: 
       main:
-        ipv4_address: #IP_PREFIX#.101
+        ipv4_address: 172.28.0.101
 
   backend: 
-    container_name: #PROJECT_NAME#.backend 
+    container_name: custom-avd-template.backend 
     env_file: 
       - .env 
     build: 
@@ -31,13 +31,13 @@ services:
       - "${BACKEND_PORT}:3333"
     privileged: true 
     volumes: 
-      - ./backend:/home/#PROJECT_NAME#.backend 
+      - ./backend:/home/custom-avd-template.backend 
     networks: 
       main:
-        ipv4_address: #IP_PREFIX#.102
+        ipv4_address: 172.28.0.102
 
   cache: 
-    container_name: #PROJECT_NAME#.cache
+    container_name: custom-avd-template.cache
     env_file: 
       - .env 
     image: redis:7.2.4-alpine 
@@ -53,10 +53,10 @@ services:
       - ./backend/.avd/redis.conf:/usr/local/redis/redis.conf
     networks: 
       main:
-        ipv4_address: #IP_PREFIX#.103
+        ipv4_address: 172.28.0.103
 
   database: 
-    container_name: #PROJECT_NAME#.database
+    container_name: custom-avd-template.database
     env_file: 
       - .env 
     image: postgres:17.2
@@ -68,7 +68,7 @@ services:
       - PGDATA=/var/lib/postgresql/data
       - POSTGRES_INITDB_ARGS=--data-checksums
     ports:
-      - "${POSTGRES_PORT}:5432"
+      - "${DATABASE_PORT}:5432"
     volumes: 
       - database:/var/lib/postgresql/data
     networks: 
@@ -86,4 +86,4 @@ networks:
     ipam:
         driver: default
         config:
-          - subnet: #IP_PREFIX#.0/16
+          - subnet: 172.28.0.0/16

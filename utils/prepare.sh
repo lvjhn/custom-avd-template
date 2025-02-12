@@ -35,7 +35,7 @@ function prepare_backend {
 
     cd ./backend
     npm install 
-    cd ../../
+    cd ../
 }
 
 function prepare_frontend {
@@ -45,7 +45,7 @@ function prepare_frontend {
     cd ./frontend 
     npm install 
     npm install vue-router pinia axios 
-    cd ../../
+    cd ../
 }
 
 main
