@@ -68,7 +68,7 @@ services:
       - PGDATA=/var/lib/postgresql/data
       - POSTGRES_INITDB_ARGS=--data-checksums
     ports:
-      - "${POSTGRES_PORT}:5432"
+      - "${DATABASE_PORT}:5432"
     volumes: 
       - database:/var/lib/postgresql/data
     networks: 
